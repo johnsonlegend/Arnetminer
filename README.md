@@ -1,8 +1,8 @@
 # Arnetminer
 Data Crawling for person and paper information on AMiner. \
 With a input file specifying a list of person's name (and affiliation), it can collect information from AMiner as following: \
-Person: name, #Papers, #Citations, h-index, G-index, Publication over years. \
-Paper: Title, Citations, Publication date, All authors (and affiliation for each person), Venue name. \
+`Person: name, #Papers, #Citations, h-index, G-index, Publication over years.` \
+`Paper: Title, Citations, Publication date, All authors (and affiliation for each person), Venue name.` \
 The result is stored in json format, a sample entry would be:
 ```
 {'#Citations': '60', 
