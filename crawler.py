@@ -9,6 +9,7 @@ from selenium.webdriver.common.proxy import ProxyType
 import json
 import requests
 import re
+import time
 
 
 def print_to_file(filename, string):
@@ -52,11 +53,11 @@ def main():
 	# Choose webdriver
 	# dcap = dict(DesiredCapabilities.Firefox)
 	dcap = dict(DesiredCapabilities.PHANTOMJS)
-	# headers = {'Referer':'https://aminer.org/', 'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'}
-	# for key, value in headers.items():
-	# 	dcap['phantomjs.page.customHeaders.{}'.format(key)] = value
-	# dcap['phantomjs.page.settings.userAgent'] = \
-	# 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4'
+	headers = {'Referer':'https://aminer.org/', 'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'}
+	for key, value in headers.items():
+		dcap['phantomjs.page.customHeaders.{}'.format(key)] = value
+	dcap['phantomjs.page.settings.userAgent'] = \
+	'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4'
 	dcap['phantomjs.page.settings.loadImages'] = False
 	
 	# Proxy Setting
@@ -117,6 +118,9 @@ def main():
 	# open('affiliations.txt', 'w').close()
 	
 	for i in range(len(names)):
+
+		# Slow down crawling speed
+		time.sleep(2)
 
 		# Store result every 10 steps
 		if i % 10 == 0:
